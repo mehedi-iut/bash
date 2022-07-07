@@ -16,34 +16,30 @@ else
 fi
 
 
-sudo apt install python3-pip
+sudo apt install python3-pip -y
 
-sudo apt install golang
+sudo apt install golang -y
 
 # install edge web browser
 sudo apt install apt-transport-https ca-certificates curl software-properties-common wget -y
 sudo wget -O- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | sudo tee /usr/share/keyrings/microsoft-edge.gpg
 echo 'deb [arch=amd64 signed-by=/usr/share/keyrings/microsoft-edge.gpg] https://packages.microsoft.com/repos/edge stable main' | sudo tee /etc/apt/sources.list.d/microsoft-edge.list
 sudo apt update
-sudo apt install microsoft-edge-stable
+sudo apt install microsoft-edge-stable -y
 
-# install monaco font
-sudo mkdir -p /usr/share/fonts/truetype/ttf-monaco && \
-sudo wget https://gist.github.com/rogerleite/b50866eb7f7b5950da01ae8927c5bd61/raw/862b6c9437f534d5899e4e68d60f9bf22f356312/mfont.ttf -O - > \
-/usr/share/fonts/truetype/ttf-monaco/Monaco_Linux.ttf && \
-sudo fc-cache
+
 
 # install gnome tweaks
-sudo apt install gnome-tweaks
+sudo apt install gnome-tweaks -y
 
 # install vim from source
 # will be installed in /usr/local/bin/vim
-sudo apt install ncurses-dev
-sudo apt install make
-sudo apt install build-essential
+sudo apt install ncurses-dev -y
+sudo apt install make -y
+sudo apt install build-essential -y
 
 wget https://github.com/vim/vim/archive/master.zip
-sudo apt install unzip
+sudo apt install unzip -y
 unzip master.zip
 cd vim-master
 cd src/
@@ -51,29 +47,43 @@ cd src/
 make
 sudo make install
 
-
 cd
 
+
 # install visual studio code
-sudo apt-get install wget gpg
+sudo apt-get install wget gpg -y
 wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
 sudo install -o root -g root -m 644 packages.microsoft.gpg /etc/apt/trusted.gpg.d/
 sudo sh -c 'echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/trusted.gpg.d/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list'
 rm -f packages.microsoft.gpg
 
-sudo apt install apt-transport-https
-sudo apt update
-sudo apt install code
+sudo apt install apt-transport-https -y
+sudo apt update -y
+sudo apt install code -y
 
 # install sublime text
 wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/sublimehq-archive.gpg
 echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
 sudo apt update -y
-sudo apt install sublime-text
+sudo apt install sublime-text -y
+
+# install monaco font
+wget https://www.cufonfonts.com/download/redirect/monaco
+unzip -q monaco
+FONTS=~/.fonts
+if test -d $FONTS; then
+    echo "$FONTS exists"
+else
+    mkdir $FONTS
+fi
+mv Monaco.ttf $FONTS
+sudo fc-cache -f -v
+
+
 
 # install vlc
 sudo apt update -y
-sudo apt install vlc
+sudo apt install vlc -y
 
 # install docker
 sudo apt-get update -y &&
