@@ -53,7 +53,7 @@ sudo make install
 cd
 
 
-# install visual studio code
+# install visual studio code and "open in code" in context manager
 # sudo apt-get install wget gpg -y
 wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
 sudo install -o root -g root -m 644 packages.microsoft.gpg /etc/apt/trusted.gpg.d/
@@ -63,6 +63,16 @@ rm -f packages.microsoft.gpg
 # sudo apt install apt-transport-https -y
 sudo apt update -y
 sudo apt install code -y
+
+sudo apt install python3-nautilus
+git clone https://github.com/vvanloc/Nautilus-OpenInVSCode.git
+cd Nautilus-OpenInVSCode
+chmod +x install.sh
+sudo ./install.sh
+nautilus -q
+cd
+
+
 
 # install sublime text
 wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/sublimehq-archive.gpg
