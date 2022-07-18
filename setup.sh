@@ -98,6 +98,11 @@ sudo fc-cache -f -v
 sudo apt update -y
 sudo apt install vlc -y
 
+# install remote desktop client (remmina)
+sudo apt-add-repository ppa:remmina-ppa-team/remmina-next 
+sudo apt update 
+sudo apt install -y remmina remmina-plugin-rdp remmina-plugin-secret
+
 # install docker
 sudo apt-get update -y &&
 # sudo apt-get install -y \
