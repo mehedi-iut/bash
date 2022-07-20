@@ -104,7 +104,7 @@ sudo apt update
 sudo apt install -y remmina remmina-plugin-rdp remmina-plugin-secret
 
 # install docker
-sudo apt-get update -y &&
+sudo apt-get update -y
 # sudo apt-get install -y \
 # apt-transport-https \
 # ca-certificates \
