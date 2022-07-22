@@ -2,17 +2,7 @@
 
 # update the system
 sudo dnf upgrade -y
-sudo dnf install wget unzip dnf-plugins-core curl
-
-FILE=~/.bashrc
-if test -f "$FILE"; then
-    echo "alias python=python3" >> $FILE
-    source $FILE
-else
-    touch $FILE
-    echo "alias python=python3" >> $FILE
-    source $FILE
-fi
+sudo dnf install dnf-plugins-core -y
 
 # install pip
 sudo dnf install python3-pip -y
@@ -22,7 +12,6 @@ sudo dnf install -y go
 
 # install edge
 sudo dnf upgrade --refresh -y
-sudo dnf install dnf-plugins-core -y
 sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
 sudo dnf config-manager --add-repo https://packages.microsoft.com/yumrepos/edge
 sudo dnf update --refresh -y
@@ -40,7 +29,7 @@ sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
 printf "[vscode]\nname=packages.microsoft.com\nbaseurl=https://packages.microsoft.com/yumrepos/vscode/\nenabled=1\ngpgcheck=1\nrepo_gpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc\nmetadata_expire=1h" | sudo tee -a /etc/yum.repos.d/vscode.repo
 sudo dnf install code -y
 
-sudo dnf install python3-nautilus
+sudo dnf install python3-nautilus -y
 git clone https://github.com/vvanloc/Nautilus-OpenInVSCode.git
 cd Nautilus-OpenInVSCode
 chmod +x install.sh
