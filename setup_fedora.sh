@@ -2,6 +2,8 @@
 
 # update the system
 sudo dnf upgrade -y
+# Enable RPM Fusion:
+sudo dnf install https://mirrors.rpmfusion.org/free/fe... -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree... -E %fedora).noarch.rpm
 sudo dnf install dnf-plugins-core -y
 
 # install pip
@@ -9,6 +11,16 @@ sudo dnf install python3-pip -y
 
 # install golang
 sudo dnf install -y go
+
+# Install Preload:
+sudo dnf copr enable elxreno/preload -y && sudo dnf install preload -y
+
+# Speed up DNF:
+echo 'fastestmirror=1' | sudo tee -a /etc/dnf/dnf.conf
+echo 'max_parallel_downloads=10' | sudo tee -a /etc/dnf/dnf.conf
+
+# Install DNFDragora:
+sudo dnf isntall dnfdragora
 
 # install edge
 sudo dnf upgrade --refresh -y
@@ -98,3 +110,9 @@ sudo dnf update -y
 sudo dnf config-manager --add-repo https://rpm.releases.hashicorp.com/fedora/hashicorp.repo
 sudo dnf install terraform -y
 
+
+# install Nvidia Driver
+sudo dnf update --refresh
+sudo dnf install akmod-nvidia -y
+sudo dnf install xorg-x11-drv-nvidia-cuda
+reboot
