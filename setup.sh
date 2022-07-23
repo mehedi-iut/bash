@@ -24,7 +24,6 @@ sudo apt install python3-pip -y
 sudo apt install golang -y
 
 # install edge web browser
-# sudo apt install apt-transport-https ca-certificates curl software-properties-common wget -y
 sudo wget -O- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | sudo tee /usr/share/keyrings/microsoft-edge.gpg
 echo 'deb [arch=amd64 signed-by=/usr/share/keyrings/microsoft-edge.gpg] https://packages.microsoft.com/repos/edge stable main' | sudo tee /etc/apt/sources.list.d/microsoft-edge.list
 sudo apt update
@@ -36,13 +35,8 @@ sudo apt install microsoft-edge-stable -y
 sudo apt install gnome-tweaks -y
 
 # install vim from source
-# will be installed in /usr/local/bin/vim
-# sudo apt install ncurses-dev -y
-# sudo apt install make -y
-# sudo apt install build-essential -y
 
 wget https://github.com/vim/vim/archive/master.zip
-# sudo apt install unzip -y
 unzip master.zip
 cd vim-master
 cd src/
@@ -54,7 +48,6 @@ cd
 
 
 # install visual studio code and "open in code" in context manager
-# sudo apt-get install wget gpg -y
 wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
 sudo install -o root -g root -m 644 packages.microsoft.gpg /etc/apt/trusted.gpg.d/
 sudo sh -c 'echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/trusted.gpg.d/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list'
@@ -105,12 +98,6 @@ sudo apt install -y remmina remmina-plugin-rdp remmina-plugin-secret
 
 # install docker
 sudo apt-get update -y
-# sudo apt-get install -y \
-# apt-transport-https \
-# ca-certificates \
-# curl \
-# gnupg-agent \
-# software-properties-common &&
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add - &&
 sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" &&
 sudo apt-get update -y &&
@@ -144,7 +131,6 @@ kubectl config view
 # install Azure CLI
 
 sudo apt-get update
-# sudo apt-get install -y ca-certificates curl apt-transport-https lsb-release gnupg
 curl -sL https://packages.microsoft.com/keys/microsoft.asc |
     gpg --dearmor |
     sudo tee /etc/apt/trusted.gpg.d/microsoft.gpg > /dev/null
