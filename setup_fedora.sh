@@ -3,7 +3,7 @@
 # update the system
 sudo dnf upgrade -y
 # Enable RPM Fusion:
-sudo dnf install https://mirrors.rpmfusion.org/free/fe... -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree... -E %fedora).noarch.rpm
+sudo dnf install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 sudo dnf install dnf-plugins-core -y
 
 # install pip
@@ -83,7 +83,7 @@ sudo dnf install docker-ce docker-ce-cli containerd.io
 sudo systemctl enable docker --now
 sudo usermod -aG docker $USER
 sudo newgrp docker
-docker version
+
 
 # install minikube and kubectl
 curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
@@ -103,6 +103,19 @@ sudo dnf install -y https://packages.microsoft.com/config/rhel/8/packages-micros
 sudo dnf install azure-cli -y
 
 # install Azure Storage explorer
+sudo dnf install dotnet-sdk-3.1
+wget https://download.microsoft.com/download/A/E/3/AE32C485-B62B-4437-92F7-8B6B2C48CB40/StorageExplorer-linux-x64.tar.gz
+sudo mkdir -p /opt/StorageExplorer-linux-x64 && \
+sudo tar -C $_ -zxvf StorageExplorer-linux-x64.tar.gz
+cat > ~/.local/share/applications/StorageExplorer.desktop <<EOL
+[Desktop Entry]
+Name=Storage Explorer
+Exec=/opt/StorageExplorer-linux-x64/StorageExplorer
+Icon=/opt/StorageExplorer-linux-x64/resources/app/out/app/icon.png
+Terminal=false
+Type=Application
+Categories=Development;
+EOL
 
 
 # install Terraform
