@@ -129,3 +129,12 @@ sudo dnf update --refresh
 sudo dnf install akmod-nvidia -y
 sudo dnf install xorg-x11-drv-nvidia-cuda
 reboot
+
+
+# install custom theme
+# mkdir ~/.themes
+# Download the WhiteSur theme and extract it
+# copy WhiteSur folder to .themes
+# then run the following command
+# gsettings set org.gnome.desktop.interface gtk-theme "WhiteSur-Dark"
+# gsettings set org.gnome.desktop.wm.preferences theme "WhiteSur-Dark"
