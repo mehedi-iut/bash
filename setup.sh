@@ -142,6 +142,24 @@ echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ $AZ_REPO 
 sudo apt-get update -y
 sudo apt-get install -y azure-cli
 
+
+# install Azure Storage explorer
+sudo apt-get update && sudo apt-get install -y dotnet6
+wget https://download.microsoft.com/download/A/E/3/AE32C485-B62B-4437-92F7-8B6B2C48CB40/StorageExplorer-linux-x64.tar.gz
+sudo mkdir -p /opt/StorageExplorer-linux-x64 && \
+sudo tar -C $_ -zxvf StorageExplorer-linux-x64.tar.gz
+cat > ~/.local/share/applications/StorageExplorer.desktop <<EOL
+[Desktop Entry]
+Name=Storage Explorer
+Exec=/opt/StorageExplorer-linux-x64/StorageExplorer
+Icon=/opt/StorageExplorer-linux-x64/resources/app/out/app/icon.png
+Terminal=false
+Type=Application
+Categories=Development;
+EOL
+snap connect storage-explorer:password-manager-service :password-manager-service
+
+
 # install Terraform
 wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor | sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg
 echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
