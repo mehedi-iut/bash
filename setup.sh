@@ -107,17 +107,22 @@ sudo chmod 666 /var/run/docker.sock
 
 
 # install minikube and kubectl for local kubernetes setup
-sudo apt update -y
-sudo apt upgrade -y
+# sudo apt update -y
+# sudo apt upgrade -y
 
-sudo apt install virtualbox virtualbox-ext-pack -y
+# sudo apt install virtualbox virtualbox-ext-pack -y
 
-wget https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+# wget https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
 
-sudo cp minikube-linux-amd64 /usr/local/bin/minikube
-sudo chmod 755 /usr/local/bin/minikube
-minikube version
+# sudo cp minikube-linux-amd64 /usr/local/bin/minikube
+# sudo chmod 755 /usr/local/bin/minikube
+# minikube version
 
+
+# install kind kubernetes
+curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.17.0/kind-linux-amd64
+chmod +x ./kind
+sudo mv ./kind /usr/local/bin/kind
 
 curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
 
@@ -125,8 +130,8 @@ chmod +x ./kubectl
 sudo mv ./kubectl /usr/local/bin/kubectl
 kubectl version -o json
 
-minikube start
-kubectl config view
+# minikube start
+# kubectl config view
 
 # install Azure CLI
 
@@ -141,6 +146,14 @@ echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ $AZ_REPO 
 
 sudo apt-get update -y
 sudo apt-get install -y azure-cli
+
+# install AWS CLI
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+sudo ./aws/install
+
+cd
+
 
 
 # install Azure Storage explorer
