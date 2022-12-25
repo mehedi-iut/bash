@@ -5,13 +5,13 @@ sudo pacman-mirrors --fasttrack && sudo pacman -Syu
 
 # install nvidia drivers
 sudo mhwd -a pci nonfree 0300
-sudo pacman -S --needed git base-devel
-sudo pacman -S python-pip
-sudo pacman -S go
+sudo pacman -Sy --needed git base-devel
+sudo pacman -Sy python-pip
+sudo pacman -Sy go
 
-sudo pacman -S gnome-tweaks
+sudo pacman -Sy gnome-tweaks
 
-sudo pacman -S vim
+sudo pacman -Sy vim
 
 # install VS Code from source
 git clone https://aur.archlinux.org/visual-studio-code-bin.git
@@ -27,8 +27,8 @@ sudo pacman -Syu sublime-text
 
 # install VLC
 sudo pacman -Syu
-sudo pacman -S vlc
-sudo pacman -S remmina
+sudo pacman -Sy vlc
+sudo pacman -Sy remmina
 
 
 # install Kind Kubernetes
@@ -48,18 +48,18 @@ curl -L https://aka.ms/InstallAzureCli | bash
 
 
 # install AWS CLI
-sudo pacman -S aws-cli -y
+sudo pacman -Sy aws-cli
 
 # install Terraform
-sudo pacman -S terraform -y
+sudo pacman -Sy terraform
 
 # install helm
-sudo pacman -S helm -y
+sudo pacman -Sy helm
 
 
 # install Docker
 sudo pacman -Syu
-sudo pacman -S docker
+sudo pacman -Sy docker
 sudo systemctl start docker.service
 sudo systemctl enable docker.service
 sudo usermod -aG docker $USER
