@@ -128,6 +128,11 @@ sudo dnf install terraform -y
 sudo dnf update --refresh
 sudo dnf install akmod-nvidia -y
 sudo dnf install xorg-x11-drv-nvidia-cuda
+
+git clone https://github.com/geminis3/envycontrol.git
+cd envycontrol
+sudo pip3 install .
+sudo envycontrol -s nvidia # after the reboot install this gnome extension https://extensions.gnome.org/extension/5009/gpu-profile-selector/
 reboot
 
 
