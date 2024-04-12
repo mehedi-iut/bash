@@ -183,3 +183,8 @@ curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scrip
 chmod 700 get_helm.sh
 ./get_helm.sh
 
+# setup ebpf dependency
+sudo apt install -y libelf-dev libz-dev
+sudo apt install -y clang
+sudo apt install -y build-essential pkg-config
+sudo apt install -y linux-tools-$(uname -r)
