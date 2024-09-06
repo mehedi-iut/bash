@@ -10,6 +10,7 @@ sudo pacman -Sy python-pip
 sudo pacman -Sy go
 
 sudo pacman -Sy gnome-tweaks
+sudo pacman -Sy blueman 
 
 sudo pacman -Sy vim
 
