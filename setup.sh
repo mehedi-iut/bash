@@ -166,7 +166,13 @@ cd
 
 
 # install Azure Storage explorer
-sudo apt-get update && sudo apt-get install -y dotnet6
+sudo apt update
+sudo apt upgrade -y
+sudo apt install -y apt-transport-https ca-certificates gnupg
+wget https://packages.microsoft.com/config/debian/12/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
+sudo dpkg -i packages-microsoft-prod.deb
+sudo apt update
+sudo apt install -y dotnet-sdk-8.0
 wget https://download.microsoft.com/download/A/E/3/AE32C485-B62B-4437-92F7-8B6B2C48CB40/StorageExplorer-linux-x64.tar.gz
 sudo mkdir -p /opt/StorageExplorer-linux-x64 && \
 sudo tar -C $_ -zxvf StorageExplorer-linux-x64.tar.gz
@@ -179,7 +185,7 @@ Terminal=false
 Type=Application
 Categories=Development;
 EOL
-snap connect storage-explorer:password-manager-service :password-manager-service
+
 
 
 # install Terraform
